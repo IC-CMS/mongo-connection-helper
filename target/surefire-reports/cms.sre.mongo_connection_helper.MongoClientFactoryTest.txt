@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: cms.sre.mongo_connection_helper.MongoClientFactoryTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 30.863 s <<< FAILURE! - in cms.sre.mongo_connection_helper.MongoClientFactoryTest
+localHostMongoClientTest(cms.sre.mongo_connection_helper.MongoClientFactoryTest)  Time elapsed: 30.863 s  <<< ERROR!
+com.mongodb.MongoTimeoutException: Timed out after 30000 ms while waiting to connect. Client view of cluster state is {type=UNKNOWN, servers=[{address=127.0.0.1:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketOpenException: Exception opening socket}, caused by {java.net.ConnectException: Connection refused: connect}}]
+	at cms.sre.mongo_connection_helper.MongoClientFactoryTest.localHostMongoClientTest(MongoClientFactoryTest.java:15)
+

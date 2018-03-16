@@ -132,4 +132,8 @@ public class MongoClientFactory {
         return ret == null ? new MongoClient() : ret;
     }
 
+    public static MongoClient getLocalhostMongoClient(){
+        return new MongoClient();
+    }
+
 }
