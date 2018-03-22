@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh "/usr/bin/docker login -u dhessler -p $docker_pass"
-                sh "mvn -B -DskipTests -s /tmp/maven_settings/settings.xml clean package"
+                sh "mvn -B -DskipTests -s /tmp/maven_settings/settings.xml clean deploy"
             }
         }
     }
