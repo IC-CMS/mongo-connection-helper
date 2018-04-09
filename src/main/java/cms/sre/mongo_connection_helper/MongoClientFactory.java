@@ -1,9 +1,6 @@
 package cms.sre.mongo_connection_helper;
 
-import com.mongodb.MongoClient;
-import com.mongodb.MongoClientOptions;
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
+import com.mongodb.*;
 import com.mongodb.connection.Server;
 import org.apache.http.ssl.PrivateKeyDetails;
 import org.apache.http.ssl.PrivateKeyStrategy;
@@ -26,6 +23,8 @@ import java.util.List;
 import java.util.Map;
 
 public class MongoClientFactory {
+
+    private static final ServerAddress DEFAULT_LOCALHOST_ADDRESS_AND_PORT = new ServerAddress("localhost", 27017);
 
     private static boolean isNotEmptyOrNull(String str){
         return str != null && str.length() > 0;
@@ -123,8 +122,10 @@ public class MongoClientFactory {
             ret = new MongoClient(addresses, creds, options);
         }else if(options != null && addresses != null && creds == null) {
             ret = new MongoClient(addresses, options);
-        }else if(addresses != null && options == null && creds == null){
+        }else if(addresses != null && options == null && creds == null) {
             ret = new MongoClient(addresses);
+        }else if(addresses != null && creds != null && options == null){
+            ret = new MongoClient(addresses, creds, MongoClientOptions.builder().build());
         }else {
             ret = new MongoClient();
         }
@@ -134,6 +135,11 @@ public class MongoClientFactory {
 
     public static MongoClient getLocalhostMongoClient(){
         return new MongoClient();
+    }
+
+    public static MongoClient getLocalhostMongoClient(String databaseName, String username, String password){
+        MongoCredential credential = MongoCredential.createCredential(username, databaseName, password.toCharArray());
+        return new MongoClient(DEFAULT_LOCALHOST_ADDRESS_AND_PORT, credential, MongoClientOptions.builder().build());
     }
 
 }
