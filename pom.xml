@@ -6,12 +6,12 @@
 
     <groupId>cms.sre</groupId>
     <artifactId>mongo-connection-helper</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
     <parent>
         <groupId>cms.sre</groupId>
         <artifactId>spring-parent-pom</artifactId>
-        <version>1.0</version>
+        <version>1.1.0</version>
     </parent>
     <distributionManagement>
         <repository>
@@ -24,6 +24,10 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
         </dependency>
     </dependencies>
     <build>

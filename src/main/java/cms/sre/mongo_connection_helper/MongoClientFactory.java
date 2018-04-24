@@ -105,7 +105,7 @@ public class MongoClientFactory {
 
     private static MongoCredential mongoCredential(MongoClientParameters mongoClientParameters){
         MongoCredential ret = null;
-        if(isNotEmptyOrNull(mongoClientParameters.getDatabaseName()) && isNotEmptyOrNull(mongoClientParameters.getMongoUsername()) && isNotEmptyOrNull(mongoClientParameters.getMongoPassword())){
+        if(mongoClientParameters != null && isNotEmptyOrNull(mongoClientParameters.getDatabaseName()) && isNotEmptyOrNull(mongoClientParameters.getMongoUsername()) && isNotEmptyOrNull(mongoClientParameters.getMongoPassword())){
             ret = MongoCredential.createCredential(mongoClientParameters.getMongoUsername(), mongoClientParameters.getDatabaseName(), mongoClientParameters.getMongoPassword().toCharArray());
         }
         return ret;
